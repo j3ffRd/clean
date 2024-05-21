@@ -1,0 +1,24 @@
+[
+    {
+        "id": "1",
+        "productName": "pname1",
+        "underlying": {
+            "name": "YH1",
+            "currency": "USD"
+        },
+        "client": {
+            "name": "Client 1"
+        }
+    },
+    {
+        "id": "2",
+        "productName": "pname2",
+        "underlying": {
+            "name": "YH1",
+            "currency": "USD"
+        },
+        "client": {
+            "name": "Client 2"
+        }
+    }
+]
