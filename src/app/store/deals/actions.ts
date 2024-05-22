@@ -1,6 +1,6 @@
 import { createActionGroup, emptyProps, props } from "@ngrx/store";
 import { Deal } from "../../domain/searchDeals/entities/deal";
-import { DealVM } from "../../domain/searchDeals/viewModels/dealVm";
+import { DealVM } from "../../viewModels/dealVm";
 
 export const dealActions = createActionGroup({
     source: "Deals",
@@ -9,5 +9,6 @@ export const dealActions = createActionGroup({
       searchDealsSucceeded: props<{ deals: Deal[] }>(),
       searchDealsFailed: props<{ error: string }>(),
       updateDeals: props<{ deals: DealVM[] }>(),
+      updateDealsSucceeded: props<{ deals: DealVM[] }>(),
     },
-  });
+});

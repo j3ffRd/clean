@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { SearchDealsUsecase } from '../../../domain/searchDeals/searchDeals.useCase';
 import { DealCountComponent } from '../../features/deals/dealCount/dealCount.component';
-import { DealVM } from '../../../domain/searchDeals/viewModels/dealVm';
+import { DealVM } from '../../../viewModels/dealVm';
 import { DealListComponent } from '../../features/deals/deal-list/deal-list.component';
+import { DealStoreFacade } from '../../../store/deals/facade';
 
 @Component({
   selector: 'app-search-deals',
@@ -19,15 +19,15 @@ import { DealListComponent } from '../../features/deals/deal-list/deal-list.comp
 export class SearchDealsComponent implements OnInit{
   deals$: Observable<DealVM[]>;
 
-  constructor(private dealUseCase: SearchDealsUsecase) {
+  constructor(private dealStoreFacade: DealStoreFacade) {
   }
 
   ngOnInit(): void {
-    this.deals$ = this.dealUseCase.getDeals();
-    this.dealUseCase.searchDeals().subscribe();
+    this.deals$ = this.dealStoreFacade.getDeals$();
+    this.dealStoreFacade.loadDeals();
   }
 
   onDealsChange(deals: DealVM[]){
-    this.dealUseCase.updateDeals(deals);
+    this.dealStoreFacade.updateDeals(deals);
   }
 }

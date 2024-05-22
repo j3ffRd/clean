@@ -1,9 +1,8 @@
-import { Observable, catchError, switchMap, tap } from 'rxjs';
+import { Observable, catchError, switchMap } from 'rxjs';
 import { SearchDealsProvider } from '../../infrastructure/providers/getDeals.provider';
 import { DealStoreFacade } from '../../store/deals/facade';
 import { Injectable } from '@angular/core';
-import { DealCountVM } from './viewModels/dealCountVm';
-import { DealVM } from './viewModels/dealVm';
+import { DealVM } from '../../viewModels/dealVm';
 import { Deal } from './entities/deal';
 
 @Injectable({providedIn: 'root'})
@@ -22,15 +21,7 @@ export class SearchDealsUsecase {
         );
     }
 
-    getDeals(): Observable<DealVM[]> {
-        return this.store.getDeals();
+    updateDeals(deals: DealVM[]) {
+        this.store.updateDealsSucceed(deals);
     }
-
-    updateDeals(deals: DealVM[]): void {
-        this.store.updateDeals(deals);
-    }
-
-    getDealCount(): Observable<DealCountVM> {
-        return this.store.getDealCount().pipe(tap(x => console.log('count', x)));
-    } 
 }

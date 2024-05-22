@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { ColDef, GridOptions, ValueGetterParams, ValueSetterParams } from "ag-grid-community";
 import { AddRowRenderer } from "./cells/add-row.renderer";
 import { DeleteRowRenderer } from "./cells/delete-row.renderer";
-import { DealVM } from "../../../../domain/searchDeals/viewModels/dealVm";
+import { DealVM } from "../../../../viewModels/dealVm";
 
 @Injectable()
 export class GridOptionsService {
@@ -32,7 +32,7 @@ export class GridOptionsService {
           },
           {
             headerName: 'Description',
-            headerComponent: AddRowRenderer,
+            //headerComponent: AddRowRenderer,
             editable: true,
             valueGetter: (params: ValueGetterParams<DealVM>) => params.data?.productName,
           },

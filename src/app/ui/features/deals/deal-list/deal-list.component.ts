@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CellValueChangedEvent, GridOptions, ModelUpdatedEvent } from 'ag-grid-community'; 
 import { AgGridAngular } from 'ag-grid-angular';
-import { DealVM } from '../../../../domain/searchDeals/viewModels/dealVm';
+import { DealVM } from '../../../../viewModels/dealVm';
 import { GridOptionsService } from './gridOptions.service';
 
 @Component({

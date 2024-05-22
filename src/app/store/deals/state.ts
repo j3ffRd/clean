@@ -25,7 +25,7 @@ export const dealsFeature = createFeature({
       deals,
       loading: false,
     })),
-    on(dealActions.updateDeals, (state, { deals }) => ({
+    on(dealActions.updateDealsSucceeded, (state, { deals }) => ({
       ...state,
       deals: state.deals.filter(x => !deals.some(y => y.id != Number(x.id))),
       loading: false,

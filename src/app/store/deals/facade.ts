@@ -3,8 +3,8 @@ import { Deal } from "../../domain/searchDeals/entities/deal";
 import { Injectable } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { dealActions } from "./actions";
-import { DealCountVM } from "../../domain/searchDeals/viewModels/dealCountVm";
-import { DealVM } from "../../domain/searchDeals/viewModels/dealVm";
+import { DealCountVM } from "../../viewModels/dealCountVm";
+import { DealVM } from "../../viewModels/dealVm";
 import { selectDealCount, selectDeals } from "./state";
 
 @Injectable({ providedIn: 'root' })
@@ -14,11 +14,15 @@ export class DealStoreFacade {
     constructor(private store: Store<Deal>) {
     }
 
-    saveDeals(deals: Deal[]) {
+    loadDeals(): void {
+        this.store.dispatch(dealActions.searchDeals());
+    }
+
+    saveDeals(deals: Deal[]): void {
         this.store.dispatch(dealActions.searchDealsSucceeded({deals}));
     }  
     
-    getDeals(): Observable<DealVM[]> {
+    getDeals$(): Observable<DealVM[]> {
         return this.store.select(selectDeals).pipe(
             map(deals => {
                 return deals.map(deal => ({
@@ -33,7 +37,11 @@ export class DealStoreFacade {
         this.store.dispatch(dealActions.updateDeals({deals}));
     }
 
-    getDealCount(): Observable<DealCountVM> {
+    updateDealsSucceed(deals: DealVM[]) {
+        this.store.dispatch(dealActions.updateDealsSucceeded({deals}));
+    }
+
+    getDealCount$(): Observable<DealCountVM> {
         return this.store.select(selectDealCount).pipe(map(count => ({count})));
     }
 }

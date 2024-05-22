@@ -2,7 +2,7 @@ import { IHeaderComp, IHeaderParams } from "ag-grid-community";
 import {maxBy} from 'lodash';
 import { IHeaderAngularComp } from "ag-grid-angular";
 import { Component } from "@angular/core";
-import { DealVM } from "../../../../../domain/searchDeals/viewModels/dealVm";
+import { DealVM } from "../../../../../viewModels/dealVm";
 
 @Component({
     standalone: true,
