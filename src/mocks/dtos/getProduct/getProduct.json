@@ -1,0 +1,16 @@
+{
+    "information": {
+        "reference": "reference",
+        "name": "name"
+    },
+    "pricing": {
+        "status": "Priced",
+        "elements": [{
+            "name": "element name",
+            "value": 12
+        }]
+    },
+    "booking": {
+        "status": "Booked"
+    }
+}

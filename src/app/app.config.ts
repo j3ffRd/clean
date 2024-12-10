@@ -6,14 +6,13 @@ import { StoreModule, provideStore } from '@ngrx/store';
 import { provideHttpClient } from '@angular/common/http';
 import { APP_CONFIG } from './core/abstractions/appConfig';
 import { environment } from '../environments/environment';
-import { reducer } from './store/deals/state';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes), 
     provideStore(), 
     provideHttpClient(),
-    importProvidersFrom(StoreModule.forFeature('deals', reducer), StoreModule.forRoot({})),
+    importProvidersFrom(StoreModule.forRoot({})),
     {provide: APP_CONFIG, useValue: environment}
   ]
 };

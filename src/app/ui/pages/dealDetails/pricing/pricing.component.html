@@ -1,0 +1,12 @@
+<div *ngIf="pricing$ | async as pricing" class="pricing-background">
+    <div> {{pricing.status}}</div>
+
+    <select 
+        name="pricingTag" 
+        id="tag" 
+        class="form-control"
+        [ngModel]="tag$ | async"
+        (ngModelChange)="setTag($event)">
+        <option *ngFor="let tag of getTags()" [value]="tag.id">{{ tag.label }}</option>
+    </select>
+</div>

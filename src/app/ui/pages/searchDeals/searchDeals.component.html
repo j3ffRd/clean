@@ -1,3 +1,30 @@
 <app-deal-list [deals]="deals$ | async" (onItemsChanged)="onDealsChange($event)"></app-deal-list>
 
-<app-deal-count></app-deal-count>
+<ng-select [items]="cities" 
+           [(ngModel)]="selectedCities"
+           bindLabel="name" 
+           bindValue="name"  
+           [closeOnSelect]="false" 
+           [multiple]="true">
+
+    <ng-template ng-header-tmp>
+        <p-orderList 
+            [value]="selectedCities"
+            header="Selected items" 
+            (onReorder)="reorder($event)"
+            [dragdrop]="true">
+                <ng-template let-it pTemplate="item">
+                    <div class="drag">
+                    <span class="material-symbols-outlined">
+                        drag_indicator
+                        </span>
+                    <input type="checkbox" [ngModel]="it" (ngModelChange)="changeItem($event, it)"/> {{it}}
+                </div>
+                </ng-template>
+        </p-orderList>
+    </ng-template>
+
+    <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+        <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected"/> {{item.name}}
+    </ng-template>
+</ng-select>

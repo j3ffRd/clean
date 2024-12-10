@@ -1,3 +1,18 @@
 :host {
   display: block;
+
+  ::ng-deep {
+    .p-orderlist-controls {
+      display: none;
+    }
+
+    .p-orderlist-list{
+      min-height: 0;
+    }
+  }
+
+  .drag {
+    display: flex;
+    align-items: center;
+  }
 }

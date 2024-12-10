@@ -1,0 +1,4 @@
+<div *ngIf="booking$ | async as booking" class="booking-background">
+    <div> {{booking.status}}</div>
+    <div >tag: {{tag()}} </div>
+</div>
